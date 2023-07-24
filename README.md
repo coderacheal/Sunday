@@ -36,9 +36,16 @@
 ### Tech Stack <a name="tech-stack"></a>
 
 <details>
+  <summary>Client</summary>
+  <ul>
+    <li><a href="https://rubyonrails.org/">React</a></li>
+  </ul>
+</details>
+
+<details>
   <summary>Server</summary>
   <ul>
-    <li><a href="https://rubyonrails.org/">Express</a></li>
+    <li><a href="https://rubyonrails.org/">Node</a></li>
   </ul>
 </details>
 
