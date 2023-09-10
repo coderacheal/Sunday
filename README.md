@@ -98,7 +98,7 @@ Clone this repository to your desired folder:
 Example commands:
 
 ```sh
-  cd my-folder
+  cd my-project
   git clone https://github.com/coderacheal/sunday.git
 
 ```
