@@ -1,0 +1,298 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(13, 12, 12);
+}
+
+.App {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  width: 100%;
+  height: 100vh; 
+  background-image: linear-gradient(to right, rgba(49, 49, 49, 0.5) 1px, transparent 1px),
+  linear-gradient(to bottom, rgba(49, 49, 49, 0.5)1px, transparent 1px);
+  background-size: 90px 90px; 
+}
+
+ul {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 5%;
+  color: white;
+  /* background-color: red; */
+  padding: 20px 0;
+  list-style-type: none;
+  width: 25%;
+  justify-content: space-around;
+}
+
+li {
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 8px 20px;
+  border-radius: 25px;
+}
+
+li:hover {
+  color: #00e508;
+  background-color: rgba(74, 226, 60, 0.3);
+}
+
+li:active {
+  color: white;
+  /* background-color: rgba(74, 226, 60, 0.3); */
+}
+
+.discoverSunday {
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 10%;
+  background-image: url('../assets/green-dots.png');
+  background-size: 30%;
+  background-repeat: no-repeat;
+}
+
+.askSunday {
+  /* color: rgb(2, 226, 2); */
+  color: rgb(78, 238, 78);
+  font-weight: bold;
+}
+
+.tag-line {
+  width: 80%;
+  color: white;
+  font-size: 70px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  margin: auto;
+  margin-top: 10%;
+}
+
+.slogan {
+  color: white;
+  width: 80%;
+  margin: 10% auto;
+  font-size: 24px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.login {
+  padding: 30px;
+  background-color: rgb(74, 204, 74);
+  color: white;
+  font-weight: bold;
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(164, 164, 164, 0.2);
+  font-size: 16px;
+}
+
+.joinChatDiv {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 10%;
+}
+
+.joinChatDiv h3 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+}
+.user-inputs {
+  width: 50%;
+  margin: 15px auto;
+  border-radius: 5px;
+  font-size: 16px;
+  padding: 10px;
+  
+}
+  
+.joinChatDiv button {
+  width: 20%;
+  padding: 10px;
+  margin: 7px auto;
+  border: none;
+  border-radius: 15px;
+  padding: 10px;
+  font-size: 16px;
+  background: #34c83b;
+  color: #fff;
+  cursor: pointer;
+}
+
+.joinChatDiv button:hover {
+  color: #34c83b;
+  background: #fff;
+  font-weight: bold;
+}
+
+.joinChatDiv button:active {
+  background: #34c83b;
+  color: #fff;
+}
+
+.chatFrame {
+  width: 70%;
+  height: 80%;
+  margin: 10% auto;
+}
+
+.chat-body {
+  height: 85%;
+  width: 100%;
+  background-color: white;
+  overflow-y: auto;
+}
+
+.chatFrame p {
+  margin: 0;
+}
+ .chat-header {
+  height: 45px;
+  border-radius: 3px;
+  background: #00e508;
+}
+
+.chat-header p {
+  display: block;
+  padding: 0 1em 0 2em;
+  color: #fff;
+  font-weight: 700;
+  line-height: 45px;
+}
+
+.enterMessage {
+  width: 100%;
+  display: flex;
+}
+
+.creator-credits {
+  display: flex;
+  position: absolute;
+  bottom: 20px;
+  color: white;
+  left: 20px;
+}
+
+.messageInput {
+  /* background-color: rgb(192, 247, 192); */
+  background-color: rgb(186, 238, 186);
+  width: 85%;
+  height: 40px;
+  border: 0;
+  outline: none;
+}
+
+.sendMessageBtn {
+  width: 15%;
+  background-color: rgb(39, 222, 76);
+  color: white;
+  border: 1px solid #00e508;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+.sendMessageBtn:hover {
+  color: black;
+  background-color: white;
+  border: 1px solid aliceblue;
+  font-weight: bold;
+}
+
+.message {
+  margin-top: 10px;
+  width: 55%;
+}
+
+#sender {
+  float: right;
+  background-color: rgb(186, 238, 186);
+  border-radius: 15px;
+  margin-right: 10px;
+  padding: 10px 20px;
+}
+
+#receiver {
+  float: left;
+  background-color: cornsilk;
+  border-radius: 15px;
+  margin-left: 10px;
+  padding: 10px 20px;
+}
+
+#time {
+  font-size: 12px;
+  float: right;
+}
+
+.message-body-text {
+  display: flex;
+  width: 85%;
+  margin: auto;
+}
+
+.metaData {
+  display: flex;
+  padding: 5px 0;
+  justify-content: flex-end;
+}
+
+.sentimentPopup {
+  width: 80%;
+  height: 40%; 
+  margin: 20% auto;
+  background-color: rgba(164, 164, 164, 0.2);
+  border-radius: 15px;
+}
+
+.overlay {
+  width: 100%;
+  height: 0%;
+  top: 0;
+  background-color: rgba(164, 164, 164, 0.2);
+}
+
+.postPopup {
+  width: 70%;
+  height: 60%;
+  margin: auto;
+  padding-top: 15%;
+  z-index: 2;
+  top: 0;
+  color: black;
+}
+
+.confirmationBtnContainer {
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+  margin: auto;
+  padding: 10px 0;
+}
+
+.confirmationBtn {
+  background-color: #00e508;
+  padding: 8px 20px;
+  border: 0;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.confirmationBtn:hover {
+  color: black;
+  background-color: white;
+  border: 1px solid aliceblue;
+  font-weight: bold;
+}
