@@ -22,7 +22,6 @@ ul {
   top: 0;
   left: 5%;
   color: white;
-  /* background-color: red; */
   padding: 20px 0;
   list-style-type: none;
   width: 25%;
@@ -38,6 +37,10 @@ li {
   border-radius: 25px;
 }
 
+.icon {
+  margin-right: 10px;
+}
+
 li:hover {
   color: #00e508;
   background-color: rgba(74, 226, 60, 0.3);
@@ -45,7 +48,6 @@ li:hover {
 
 li:active {
   color: white;
-  /* background-color: rgba(74, 226, 60, 0.3); */
 }
 
 .discoverSunday {
@@ -58,7 +60,6 @@ li:active {
 }
 
 .askSunday {
-  /* color: rgb(2, 226, 2); */
   color: rgb(78, 238, 78);
   font-weight: bold;
 }
@@ -295,4 +296,31 @@ li:active {
   background-color: white;
   border: 1px solid aliceblue;
   font-weight: bold;
+}
+
+.all-socials {
+  display: flex;
+  /* flex-direction: column; */
+  /* margin-right: 50px; */
+  /* background-color: red; */
+}
+
+.icon-social {
+  color: rgb(0, 0, 0);
+  font-size: 15px;
+  margin-top: 35px;
+  margin-right: 14px;
+  border-radius: 50%;
+  padding: 8px;
+  background: linear-gradient(to left, lime 50%, #000 50%);
+  background-size: 200% 100%;
+  background-position: right bottom;
+  background-color: lime;
+  transition: background-position 0.4s, transform 0.3s;
+}
+
+.icon-social:hover {
+  background-position: left bottom;
+  transform: scale(1.2);
+  color: white;
 }

@@ -28,13 +28,12 @@ const App = () => {
             <li>Sunday</li>
             <li>
               <span>
-              <i class="fa-solid fa-link"></i>
+              <i class="fa-solid fa-link icon"></i>
                 About
               </span>
             </li>
             <li>
-              <span><i aria-label="Input Label" className="fa-brands fa-angellist" />Share</span>
-              <i class="fa-sharp fa-light fa-share-nodes"></i>
+              <span><i aria-label="Input Label" className="fa-brands fa-angellist icon" />Share</span>
             </li>
           </ul>
         </div>
