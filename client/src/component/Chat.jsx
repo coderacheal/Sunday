@@ -1,13 +1,55 @@
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import SentimentPopUp from "./SentimentPopUp";
+import * as tf from '@tensorflow/tfjs';
 
 
 const Chat = ({ socket, username, room}) => {
   const [currentMessage, setCurrentMessage] = useState("");
-  const [sentiment, setSentiment] = useState("Litigious")
+  const [sentiment, setSentiment] = useState("none")
   const [messageList, setMessageList] = useState([]);
   const [sentimentPopup, setSentimentPopup] = useState(false)
+
+  useEffect(() => {
+    // Load the TensorFlow.js model when the component mounts
+    const loadModel = async () => {
+      try {
+        const loadedModel = await tf.loadLayersModel('path/to/tfjs_sentiment_model/model.json');
+        setModel(loadedModel);
+      } catch (error) {
+        console.error('Error loading the model:', error);
+      }
+    };
+
+    loadModel(); // Load the model when the component mounts
+  }, []);
+
+  // Predict sentiment using the loaded model
+  const predictSentiment = async (text) => {
+    if (!model) {
+      console.warn('Model not loaded yet.');
+      return;
+    }
+
+    try {
+      const tokenizedText = tokenizer.encode(text, { truncation: true, padding: 'max_length' });
+      const inputTensor = tf.tensor([tokenizedText]);
+
+      // Make predictions
+      const predictions = model.predict(inputTensor);
+      const handleSentiment = () => {
+        setSentiment(predictions)
+      }
+
+      // update the sentiment state
+      handleSentiment()
+     
+      // Dispose of the inputTensor to avoid memory leaks
+      inputTensor.dispose();
+    } catch (error) {
+      console.error('Error predicting sentiment:', error);
+    }
+  };
 
   const handleSentimentPopup = () => {
     if (currentMessage !== "") {
@@ -18,10 +60,6 @@ const Chat = ({ socket, username, room}) => {
   const handleExitSending = () => {
     setSentimentPopup(false)
   }
-
-  // const handleSentiment = () => {
-  //   setSentiment('Uncertainity')
-  // }
 
   const sendMessage = async () => {
     if (currentMessage !== "") {
@@ -76,7 +114,7 @@ const Chat = ({ socket, username, room}) => {
           })}
         </ScrollToBottom>
         ): (
-          <SentimentPopUp onSend={sendMessage} onExit={handleExitSending}/>
+          <SentimentPopUp onSend={sendMessage} onExit={handleExitSending} sentiment={sentiment}/>
         ) }
         
       </div>
@@ -93,7 +131,8 @@ const Chat = ({ socket, username, room}) => {
             event.key === "Enter" && handleSentimentPopup();
           }}
         />
-        <button className="sendMessageBtn" onClick={handleSentimentPopup}>Send</button>
+        <button className="sendMessageBtn" 
+        onClick={() =>{predictSentiment(currentMessage); handleSentimentPopup();}}>Send</button>
       </div>
     </div>
   );

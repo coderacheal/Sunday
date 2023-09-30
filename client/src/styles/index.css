@@ -302,7 +302,7 @@ li:active {
   display: flex;
   /* flex-direction: column; */
   /* margin-right: 50px; */
-  /* background-color: red; */
+  background-color: red;
 }
 
 .icon-social {
