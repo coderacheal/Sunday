@@ -7,3 +7,6 @@ def home():
     return {'Greeting' : 'Hello'}
 
 
+@app.post("/predict_sentiment")
+def predict_sentiment():
+    pass
