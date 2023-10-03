@@ -6,4 +6,6 @@ app = FastAPI()
 def home():
     return {'Greeting' : 'Hello'}
 
-
+@app.post("/predict")
+def predict_sentiment():
+    pass
