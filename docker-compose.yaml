@@ -1,0 +1,19 @@
+version: '3'
+services:
+  api:
+    build:
+      context: ./api
+    ports:
+      - "80:80"
+
+  client:
+    build:
+      context: ./client
+    ports:
+      - "3000:3000"
+
+  server:
+    build:
+      context: ./server
+    ports:
+      - "3001:3001"

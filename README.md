@@ -52,7 +52,7 @@
 <details>
   <summary>Model</summary>
   <ul>
-    <li><a href="https://rubyonrails.org/">Huggingface bert model</a></li>
+    <li><a href="https://rubyonrails.org/">Huggingface Mobilebert from Google</a></li>
   </ul>
 </details>
 

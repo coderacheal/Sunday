@@ -5,7 +5,7 @@ import joblib
 
 app = FastAPI()
 
-mobilebert = joblib.load('mobile_bert.joblib')
+mobilebert = joblib.load('../mobile/mobile_bert.joblib')
 
 class Sentiment(BaseModel):
     text: str
