@@ -10,19 +10,19 @@ const Chat = ({ socket, username, room}) => {
   const [messageList, setMessageList] = useState([]);
   const [sentimentPopup, setSentimentPopup] = useState(false)
 
-  useEffect(() => {
-    // Load the TensorFlow.js model when the component mounts
-    const loadModel = async () => {
-      try {
-        const loadedModel = await tf.loadLayersModel('path/to/tfjs_sentiment_model/model.json');
-        setModel(loadedModel);
-      } catch (error) {
-        console.error('Error loading the model:', error);
-      }
-    };
+  // useEffect(() => {
+  //   // Load the TensorFlow.js model when the component mounts
+  //   const loadModel = async () => {
+  //     try {
+  //       const loadedModel = await tf.loadLayersModel('path/to/tfjs_sentiment_model/model.json');
+  //       setModel(loadedModel);
+  //     } catch (error) {
+  //       console.error('Error loading the model:', error);
+  //     }
+  //   };
 
-    loadModel(); // Load the model when the component mounts
-  }, []);
+  //   loadModel(); // Load the model when the component mounts
+  // }, []);
 
   // Predict sentiment using the loaded model
   const predictSentiment = async (text) => {

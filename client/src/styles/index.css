@@ -300,18 +300,13 @@ li:active {
 
 .all-socials {
   display: flex;
-
-  /* flex-direction: column; */
-
-  /* margin-right: 50px; */
-  background-color: red;
 }
 
 .icon-social {
   color: rgb(0, 0, 0);
-  font-size: 15px;
+  font-size: 8px;
   margin-top: 35px;
-  margin-right: 14px;
+  margin-right: 7px;
   border-radius: 50%;
   padding: 8px;
   background: linear-gradient(to left, lime 50%, #000 50%);
