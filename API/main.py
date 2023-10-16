@@ -1,26 +1,37 @@
 from fastapi import FastAPI
 import uvicorn
-from pydantic import BaseModel
-import joblib
+import torch
+from transformers import MobileBertTokenizer, MobileBertForSequenceClassification
 
 app = FastAPI()
 
-mobilebert = joblib.load('../mobile/mobile_bert.joblib')
+# Load the pre-trained model
+model_path = "/model/sunday_mobile_bert_model"
+model = MobileBertForSequenceClassification.from_pretrained(model_path)
+tokenizer = MobileBertTokenizer.from_pretrained(model_path)
 
-class Sentiment(BaseModel):
-    text: str
 
 @app.get("/")
 def home():
     return {'Greeting' : 'Hello'}
 
-@app.post("/predict_sentiment")
-def predict_sentiment(data: Sentiment):
-    data = data.dict()
-    text = data['text']
+@app.get("/predict/{text}")
+def predict(text: str):
 
-    prediction  = mobilebert.predict([[text]])
-    return {'prediction': prediction[0]}
+    # Tokenize the input text
+    input_encoding = tokenizer(text, truncation=True, padding=True, max_length=512, return_tensors='pt')
 
-if __name__ == '__main__':
-    uvicorn.run(app, host="127.0.0.1", port=7860, reload=True)
+    # Forward pass through the model
+    with torch.no_grad():
+        model.eval()
+       
+        input_ids = input_encoding['input_ids']
+        attention_mask = input_encoding['attention_mask']
+        
+        outputs = model(input_ids, attention_mask=attention_mask)
+
+        # Get predicted class and probability
+        predicted_class = torch.argmax(outputs.logits, dim=1)
+        predicted_probability = torch.softmax(outputs.logits, dim=1)
+
+        return {"predicted_class": predicted_class, "predicted_probability": predicted_probability}
