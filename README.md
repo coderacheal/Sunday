@@ -62,6 +62,13 @@
       <li><a href="https://www.postgresql.org/">Socket.io</a></li>
     </ul>
   </details>
+  
+<details>
+  <summary>API</summary>
+    <ul>
+      <li><a href="https://www.postgresql.org/">FastAPI</a></li>
+    </ul>
+  </details>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 <!-- Features -->
