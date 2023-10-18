@@ -29,7 +29,7 @@
 
 # Sunday <a name="about-project"></a>
 
-**Sunday** is an app embed with a machine learning model that warns users about the context of their message before they send them.
+**Sunday** is an app embed with a machine learning model that warns users about the sentiment of their message.
 
 ## 🛠 Built With <a name="built-with"></a>
 
