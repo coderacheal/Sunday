@@ -79,3 +79,21 @@
   //     console.error('Error predicting sentiment:', error);
   //   }
   // };
+
+
+  const sendMessage = async () => {
+    if (currentMessage !== "") {
+      const messageData = {
+        room: room,
+        author: username,
+        message: currentMessage,
+        time: new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }),
+        // sentiment: sentiment
+      };
+
+      await socket.emit("send_message", messageData);
+      setMessageList((list) => [...list, messageData]);
+      setCurrentMessage("");
+      setSentimentPopup(false)
+    }
+  };
