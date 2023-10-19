@@ -6,32 +6,28 @@ import SentimentPopUp from "./SentimentPopUp";
 const Chat = ({ socket, username, room}) => {
   const [currentMessage, setCurrentMessage] = useState("");
   const [sentiment, setSentiment] = useState("")
-  const [sentiment_probability, setSentimentProbability] = useState("")
+  const [sentiment_probability, setSentimentProbability] = useState(0)
   const [messageList, setMessageList] = useState([]);
   const [sentimentPopup, setSentimentPopup] = useState(false)
 
 
-  const getSentiment = async (message) => {
-    try {
-      const response = await fetch(`http://127.0.0.1:8000/predict/text=${encodeURIComponent(message)}`);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-  
-      const sentimentData = await response.json();
-      return sentimentData; 
-      
-    } catch (error) {
-      console.error("Error fetching sentiment:", error);
-    }
-  };
-  
-
-
-  const handleSentimentPopup = () => {
+  const handleSentimentPopup = async (message) => {
     if (currentMessage !== "") {
-    setSentimentPopup(true)
+      try {
+        const response = await fetch(`http://127.0.0.1:8000/predict/text=${encodeURIComponent(message)}`);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+    
+        const sentimentData = await response.json();
+        setSentiment(sentimentData.predicted_class);
+        setSentimentProbability(sentimentData.predicted_probability);
+        setSentimentPopup(true);
+        
+      } catch (error) {
+        console.error("Error fetching sentiment:", error);
+      }
     }
   }
 
@@ -41,29 +37,13 @@ const Chat = ({ socket, username, room}) => {
 
   const sendMessage = async () => {
     if (currentMessage !== "") {
-      // Fetch sentiment data before sending the message
-      const sentimentData = await getSentiment(currentMessage);
-      console.log(sentimentData)
-
-      const handleSentiment = () => {
-        setSentiment(sentimentData['predicted_class'])
-      }
-
-      const handleSentimentProbability = () => {
-        setSentimentProbability(sentimentData['predicted_probability'])
-      }
-
-      handleSentiment()
-      handleSentimentProbability()
-      
-
       const messageData = {
         room: room,
         author: username,
         message: currentMessage,
         time: new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }),
         sentiment: sentiment,
-        sentiment_probability: sentiment_probability
+        sentiment_probability: `${(sentiment_probability.toFixed(2) * 100)}%`
       };
 
       console.log(sentiment)
@@ -93,7 +73,6 @@ const Chat = ({ socket, username, room}) => {
         {!sentimentPopup? (
           <ScrollToBottom className="messageDiv">
           {messageList.map((messageContent) => {
-            console.log(messageContent)
             return (
               <div
                 className="message"
@@ -103,8 +82,9 @@ const Chat = ({ socket, username, room}) => {
                   <div className="message-content">
                     <p className="message-body-text">{messageContent.message}</p>
                     <div className="metaData">
-                    <p id="sentiment">Sentiment: <b> {messageContent.sentiment}</b></p>
-                  </div>
+                      <p id="sentiment">Sentiment: <b> {messageContent.sentiment}</b></p>
+                      <p id="sentiment">Probability: <b> {messageContent.sentiment_probability}</b></p>
+                    </div>
                     <p id="time"> Sent by {messageContent.author} at {messageContent.time}</p>
                   </div>
                 </div>
@@ -113,7 +93,7 @@ const Chat = ({ socket, username, room}) => {
           })}
         </ScrollToBottom>
         ): (
-          <SentimentPopUp onSend={sendMessage} onExit={handleExitSentimentPopup}/>
+          <SentimentPopUp onSend={sendMessage} onExit={handleExitSentimentPopup} sentiment={sentiment}/>
         ) }
         
       </div>
@@ -131,10 +111,11 @@ const Chat = ({ socket, username, room}) => {
           }}
         />
         <button className="sendMessageBtn" 
-        onClick={() =>{handleSentimentPopup();}}>Send</button>
+        onClick={() =>{handleSentimentPopup(currentMessage);}}>Send</button>
       </div>
     </div>
   );
 }
 
 export default Chat;
+
