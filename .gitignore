@@ -20,6 +20,8 @@
 # production
 /build
 
+/api/model/sunday_mobile_bert_model
+
 # misc
 .DS_Store
 .env.local
