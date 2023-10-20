@@ -29,7 +29,18 @@
 
 # Sunday <a name="about-project"></a>
 
-**Sunday** is an app embed with a machine learning model that warns users about the sentiment of their message.
+**Sunday** is a chat app embed with a NLP transformer model from huggingface. The app predicts sentiment ans probability of the sentiment before and allow users to decide if they still want to send the text giving the information.
+
+Sunday predicts five sentiments
+- Positive 
+- Negative
+- Neutral
+- Litigious
+- Uncertainty
+
+Want to know what your texts convey? Try Sunday
+
+Note that is a pure NLP projects designed and built for eduction and academic purposes
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -38,35 +49,38 @@
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="https://rubyonrails.org/">React</a></li>
+    <li><a href="https://react.dev">React</a></li>
   </ul>
 </details>
 
 <details>
   <summary>Server</summary>
   <ul>
-    <li><a href="https://rubyonrails.org/">Node</a></li>
+    <li><a href="https://nodejs.org">Nodemon</a></li>
+  </ul>
+  <ul>
+    <li><a href="https://nodejs.org">Express</a></li>
   </ul>
 </details>
 
 <details>
   <summary>Model</summary>
   <ul>
-    <li><a href="https://rubyonrails.org/">Huggingface Mobilebert from Google</a></li>
+    <li><a href="https://huggingface.co/docs/transformers/index">Huggingface Mobilebert from Google</a></li>
   </ul>
 </details>
 
 <details>
   <summary>Socket</summary>
     <ul>
-      <li><a href="https://www.postgresql.org/">Socket.io</a></li>
+      <li><a href="https://socket.io">Socket.io</a></li>
     </ul>
   </details>
   
 <details>
   <summary>API</summary>
     <ul>
-      <li><a href="https://www.postgresql.org/">FastAPI</a></li>
+      <li><a href="https://fastapi.tiangolo.com">FastAPI</a></li>
     </ul>
   </details>
 
@@ -125,17 +139,37 @@ Example command:
 
 ### Usage
 
-To run the project, execute the following command:
+**To run the Frontend:**
 
 Example command:
 
 ```sh
+  cd client
   npm start 
 
   OR 
 
+  cd client
   npm run start 
 
+```
+
+**To run the Backend:**
+
+Example command:
+
+```sh
+  cd server
+  nodemon src/index.js
+```
+
+**To run the API:**
+
+Example command:
+
+```sh
+  cd api
+  uvicorn main:app --reload
 ```
 
 ## 👥 Authors <a name="authors"></a>
