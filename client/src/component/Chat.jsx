@@ -85,7 +85,7 @@ const Chat = ({ socket, username, room}) => {
                       <p id="sentiment">Sentiment: <b> {messageContent.sentiment}</b></p>
                       <p id="sentiment">Probability: <b> {messageContent.sentiment_probability}</b></p>
                     </div>
-                    <p id="time"> Sent by {messageContent.author} at {messageContent.time}</p>
+                    <p id="time">Sent by {messageContent.author} at {messageContent.time}</p>
                   </div>
                 </div>
               </div>
@@ -93,7 +93,7 @@ const Chat = ({ socket, username, room}) => {
           })}
         </ScrollToBottom>
         ): (
-          <SentimentPopUp onSend={sendMessage} onExit={handleExitSentimentPopup} sentiment={sentiment}/>
+          <SentimentPopUp onSend={sendMessage} onExit={handleExitSentimentPopup} sentiment={sentiment} probability={probability}/>
         ) }
         
       </div>
