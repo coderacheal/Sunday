@@ -7,19 +7,20 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-# origins = ["http://localhost:3000"] 
+origins = ["http://localhost:3000"] 
 
-# app.add_middleware(
-#     CORSMiddleware,
-#     allow_origins=origins,
-#     allow_credentials=True,
-#     allow_methods=["*"],
-#     allow_headers=["*"],
-# )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-# Load the my further trained model, tokenizer, label_encoder
+# Load my tuned model, tokenizer and label_encoder
 model_path = ".\model\sunday_mobile_bert_model"
 model = MobileBertForSequenceClassification.from_pretrained(model_path)
+# tokenizer = MobileBertTokenizer.from_pretrained(model_path)
 tokenizer = MobileBertTokenizer.from_pretrained('google/mobilebert-uncased')
 # label_encoder = joblib.load(".\model\sunday_mobile_bert_model\label_encoder.joblib")
 
