@@ -31,7 +31,7 @@
 
 **Sunday** is a chat app embed with a NLP transformer model from huggingface. The app predicts sentiment ans probability of the sentiment before and allow users to decide if they still want to send the text giving the information.
 
-Sunday predicts five sentiments
+Sunday predicts five (5) sentiments
 - Positive 
 - Negative
 - Neutral
