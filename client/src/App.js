@@ -38,8 +38,10 @@ const App = () => {
           </ul>
         </div>
         <p className="tag-line">Discover how you <span className="askSunday"> text.</span> </p>
-        <p className="slogan">Before your next text, ask SUNDAY </p>
-        <button className="login">Create a permanent account</button>
+        <p className="slogan">Before your next text, ask <span className="askSunday"> SUNDAY</span> </p>
+        <div className="login-container">
+          <button className="login">Create a account (coming soon)</button>
+        </div>
       </div>
       <div>
         {!showChat ? (
@@ -56,12 +58,12 @@ const App = () => {
             <input
               type="text"
               className="user-inputs"
-              placeholder="Enter Room ID..."
+              placeholder="Enter a Room ID..."
               onChange={(event) => {
                 setRoom(event.target.value);
               }}
             />
-            <button onClick={joinRoom}>Join A Room</button>
+            <button className="join-room-button" onClick={joinRoom}>Join A Room</button>
           </div>
         ) : (
           <Chat socket={socket} username={username} room={room} />

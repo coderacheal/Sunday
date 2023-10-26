@@ -36,6 +36,7 @@ li {
   cursor: pointer;
   padding: 8px 20px;
   border-radius: 25px;
+  transition: 0.5s;
 }
 
 .icon {
@@ -78,9 +79,14 @@ li:active {
 .slogan {
   color: white;
   width: 80%;
-  margin: 10% auto;
+  margin: 5% auto;
   font-size: 24px;
   font-family: 'Montserrat', sans-serif;
+}
+
+.login-container {
+  display: flex;
+  width: 80%;
 }
 
 .login {
@@ -88,10 +94,22 @@ li:active {
   background-color: rgb(74, 204, 74);
   color: white;
   font-weight: bold;
-  border: 0;
+  border: 2px solid rgb(74, 204, 74);
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(164, 164, 164, 0.2);
-  font-size: 16px;
+  font-size: 14px;
+  width: 60%;
+  margin: auto;
+  margin-left: 10%;
+  align-self: center;
+  transition: 1s;
+  cursor: pointer;
+}
+
+.login:hover {
+  background-color: rgb(255, 106, 0);
+  color: white;
+  border: 2px solid black;
 }
 
 .joinChatDiv {
@@ -116,16 +134,17 @@ li:active {
   padding: 10px;
 }
 
-.joinChatDiv button {
+.joinChatDiv .join-room-button {
   width: 20%;
   margin: 7px auto;
   border: none;
   border-radius: 15px;
   padding: 10px;
-  font-size: 16px;
+  font-size: 15px;
   background: #34c83b;
   color: #fff;
   cursor: pointer;
+  transition: 1s;
 }
 
 .joinChatDiv button:hover {
@@ -183,8 +202,14 @@ li:active {
   left: 20px;
 }
 
+.creator {
+  margin: 0;
+  align-self: center;
+  margin-right: 10px;
+  top: 10px;
+}
+
 .messageInput {
-  /* background-color: rgb(192, 247, 192); */
   background-color: rgb(186, 238, 186);
   width: 85%;
   height: 40px;
@@ -305,7 +330,6 @@ li:active {
 .icon-social {
   color: rgb(0, 0, 0);
   font-size: 8px;
-  margin-top: 35px;
   margin-right: 7px;
   border-radius: 50%;
   padding: 8px;

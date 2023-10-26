@@ -6,7 +6,7 @@ import SentimentPopUp from "./SentimentPopUp";
 const Chat = ({ socket, username, room}) => {
   const [currentMessage, setCurrentMessage] = useState("");
   const [sentiment, setSentiment] = useState("")
-  const [sentiment_probability, setSentimentProbability] = useState(0)
+  const [probability, setSentimentProbability] = useState(0)
   const [messageList, setMessageList] = useState([]);
   const [sentimentPopup, setSentimentPopup] = useState(false)
 
@@ -43,11 +43,11 @@ const Chat = ({ socket, username, room}) => {
         message: currentMessage,
         time: new Date().toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true }),
         sentiment: sentiment,
-        sentiment_probability: `${(sentiment_probability.toFixed(2) * 100)}%`
+        probability: `${(probability.toFixed(2) * 100)}%`
       };
 
       console.log(sentiment)
-      console.log(sentiment_probability)
+      console.log(probability)
   
       await socket.emit("send_message", messageData);
       setMessageList((list) => [...list, messageData]);
@@ -83,7 +83,7 @@ const Chat = ({ socket, username, room}) => {
                     <p className="message-body-text">{messageContent.message}</p>
                     <div className="metaData">
                       <p id="sentiment">Sentiment: <b> {messageContent.sentiment}</b></p>
-                      <p id="sentiment">Probability: <b> {messageContent.sentiment_probability}</b></p>
+                      <p id="sentiment">Probability: <b> {messageContent.probability}</b></p>
                     </div>
                     <p id="time">Sent by {messageContent.author} at {messageContent.time}</p>
                   </div>
