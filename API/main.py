@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 import torch
 from transformers import MobileBertTokenizer, MobileBertForSequenceClassification
-import joblib
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -17,12 +16,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Load my tuned model, tokenizer and label_encoder
+# Load my tuned model
 model_path = ".\model\sunday_mobile_bert_model"
 model = MobileBertForSequenceClassification.from_pretrained(model_path)
 # tokenizer = MobileBertTokenizer.from_pretrained(model_path)
 tokenizer = MobileBertTokenizer.from_pretrained('google/mobilebert-uncased')
-# label_encoder = joblib.load(".\model\sunday_mobile_bert_model\label_encoder.joblib")
 
 @app.get("/")
 def home():
@@ -40,13 +38,26 @@ def predict_sentiment(text: str):
     outputs = model(input_ids, attention_mask=attention_mask)
 
     # Get predicted class and probability
-    predicted_class = torch.argmax(outputs.logits, dim=1).item()
+    predicted_class_digit = torch.argmax(outputs.logits, dim=1).item()
     predicted_probability = torch.softmax(outputs.logits, dim=1).tolist()
 
     # Extract probability for the predicted class only and reverse the predicted sentiment into text
-    class_probability = predicted_probability[0][predicted_class]
+    class_probability = predicted_probability[0][predicted_class_digit]
     # predicted_label = label_encoder.inverse_transform([predicted_class])[0]
     # predicted_probability = probabilities[0, predictions[0]].item()
+
+    predicted_class = ''
+
+    if predicted_class_digit == 0:
+        predicted_class = 'Litigious'
+    elif predicted_class_digit == 1:
+        predicted_class = 'Negative'
+    elif predicted_class_digit == 2:
+        predicted_class = 'Neutral'
+    elif predicted_class_digit == 3:
+        predicted_class = 'Postive'
+    else: 
+        predicted_class = 'Uncertainty'
 
     return {"predicted_class": predicted_class, "predicted_probability": class_probability}
 
