@@ -8,6 +8,9 @@ RUN npm install
 
 COPY . /app
 
-EXPOSE 3000
+# Install Nodemon globally
+RUN npm install -g nodemon
+
+EXPOSE 3001
 
 CMD ["nodemon", "src/index.js"]

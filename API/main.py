@@ -19,7 +19,6 @@ app.add_middleware(
 # Load my tuned model
 model_path = ".\model\sunday_mobile_bert_model"
 model = MobileBertForSequenceClassification.from_pretrained(model_path)
-# tokenizer = MobileBertTokenizer.from_pretrained(model_path)
 tokenizer = MobileBertTokenizer.from_pretrained('google/mobilebert-uncased')
 
 @app.get("/")
@@ -41,13 +40,11 @@ def predict_sentiment(text: str):
     predicted_class_digit = torch.argmax(outputs.logits, dim=1).item()
     predicted_probability = torch.softmax(outputs.logits, dim=1).tolist()
 
-    # Extract probability for the predicted class only and reverse the predicted sentiment into text
+    # Extract probability for the predicted class only 
     class_probability = predicted_probability[0][predicted_class_digit]
-    # predicted_label = label_encoder.inverse_transform([predicted_class])[0]
-    # predicted_probability = probabilities[0, predictions[0]].item()
 
+    # Reverse the predicted sentiment into text. This should be done with a label encoder ideally
     predicted_class = ''
-
     if predicted_class_digit == 0:
         predicted_class = 'Litigious'
     elif predicted_class_digit == 1:

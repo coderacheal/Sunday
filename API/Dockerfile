@@ -2,8 +2,8 @@
 FROM python:3.10-alpine3.18
 
 #Install dependencies from requirements.txt
-COPY requirements.txt /app
-RUN pip install --timeout 200000 -r requirements.txt
+COPY requirements.txt /tmp/requirements.txt
+RUN python -m pip install -r /tmp/requirements.txt
 
 # Copy the current directory contents into the container at /app
 COPY . /app
