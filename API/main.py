@@ -3,6 +3,7 @@ import torch
 from transformers import MobileBertTokenizer, MobileBertForSequenceClassification
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
+# import numpy as np
 
 app = FastAPI()
 
@@ -39,7 +40,7 @@ def predict_sentiment(text: str):
     # Get predicted class and probability
     predicted_class_digit = torch.argmax(outputs.logits, dim=1).item()
     predicted_probability = torch.softmax(outputs.logits, dim=1).tolist()
-
+    
     # Extract probability for the predicted class only 
     class_probability = predicted_probability[0][predicted_class_digit]
 
