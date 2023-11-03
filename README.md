@@ -172,6 +172,10 @@ Example command:
   uvicorn main:app --reload
 ```
 
+**Link to Model**
+
+Please find a link to the model hosted in Huggingface [here]()
+
 ## 👥 Authors <a name="authors"></a>
 
 🕵🏽‍♀️ **Racheal Appiah-kubi**
