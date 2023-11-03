@@ -5,12 +5,12 @@ services:
       context: ./api  
     ports:
       - "80:80"
-  frontend:
+  client:
     build:
       context: ./client
     ports:
       - "3000:3000"
-  server:
+  ioserver:
     build:
       context: ./server
     ports:
