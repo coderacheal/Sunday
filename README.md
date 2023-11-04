@@ -174,7 +174,7 @@ Example command:
 
 **Link to Model**
 
-Please find a link to the model hosted in Huggingface [here]()
+Please find a link to the model hosted in Huggingface [here](https/huggingface/coderacheal/model/sunday)
 
 ## 👥 Authors <a name="authors"></a>
 
