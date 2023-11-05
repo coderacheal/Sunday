@@ -3,11 +3,10 @@ import torch
 from transformers import MobileBertTokenizer, MobileBertForSequenceClassification
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
-# import numpy as np
 
 app = FastAPI()
 
-origins = ["http://localhost:3000"] 
+origins = ["http://sunday-client-1"] 
 
 app.add_middleware(
     CORSMiddleware,
@@ -18,7 +17,7 @@ app.add_middleware(
 )
 
 # Load my tuned model
-model_path = ".\model\sunday_mobile_bert_model"
+model_path = "./model/sundayMobileBertModel"
 model = MobileBertForSequenceClassification.from_pretrained(model_path)
 tokenizer = MobileBertTokenizer.from_pretrained('google/mobilebert-uncased')
 
@@ -60,5 +59,5 @@ def predict_sentiment(text: str):
     return {"predicted_class": predicted_class, "predicted_probability": class_probability}
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
     

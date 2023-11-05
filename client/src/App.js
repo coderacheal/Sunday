@@ -5,7 +5,7 @@ import Chat from "./component/Chat";
 import Socials from "./component/Socials";
 
 
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect("http://sunday-ioserver-1");
 
 const App = () => {
   const [username, setUsername] = useState("");

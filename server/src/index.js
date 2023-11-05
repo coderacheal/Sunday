@@ -9,7 +9,7 @@ const server = createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "http://sunday-client-1",
     methods: ["GET", "POST"],
   },
 });
@@ -29,6 +29,11 @@ io.on("connection", (socket) => {
   });
   
 });
+
+app.get("/", (req, res) => {
+  res.send("Hello, this is the Socket.io server!");
+});
+
 
 server.listen(3001, () => {
   console.log("[SERVER RUNNING...]");
