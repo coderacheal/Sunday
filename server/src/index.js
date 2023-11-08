@@ -9,7 +9,7 @@ const server = createServer(app);
 
 const io = new Server(server, {
   cors: {
-    origin: "http://sunday-client-1",
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"],
   },
 });

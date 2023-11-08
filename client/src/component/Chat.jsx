@@ -14,7 +14,7 @@ const Chat = ({ socket, username, room}) => {
   const handleSentimentPopup = async (message) => {
     if (currentMessage !== "") {
       try {
-        const response = await fetch(`http://sunday-api-1/predict/text=${encodeURIComponent(message)}`);
+        const response = await fetch(`http://localhost:80/predict/text=${encodeURIComponent(message)}`);
         
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
