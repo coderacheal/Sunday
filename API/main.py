@@ -6,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-origins = ["http://sunday-client-1"] 
+origins = ["http://localhost:3000"] 
 
 app.add_middleware(
     CORSMiddleware,
