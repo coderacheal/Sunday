@@ -14,7 +14,8 @@ const Chat = ({ socket, username, room}) => {
   const handleSentimentPopup = async (message) => {
     if (currentMessage !== "") {
       try {
-        const response = await fetch(`http://localhost:80/predict/text=${encodeURIComponent(message)}`);
+        // const response = await fetch(`http://localhost:80/predict/text=${encodeURIComponent(message)}`);
+        const response = await fetch(`http://127.0.0.1:8000/predict/text=${encodeURIComponent(message)}`);
         
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
@@ -83,7 +84,7 @@ const Chat = ({ socket, username, room}) => {
                     <p className="message-body-text">{messageContent.message}</p>
                     <div className="metaData">
                       <p id="sentiment">Sentiment: <b> {messageContent.sentiment}</b></p>
-                      <p id="sentiment">Probability: <b> {messageContent.probability}</b></p>
+                      <p id="sentiment-probability">Probability: <b> {messageContent.probability}</b></p>
                     </div>
                     <p id="time">Sent by {messageContent.author} at {messageContent.time}</p>
                   </div>
