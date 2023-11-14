@@ -22,6 +22,8 @@ const App = () => {
 
   return (
     <div className="App">
+      <div className="cursor-dot"></div>
+      <div className="cursor-outline"></div>
       <div className="discoverSunday">
         <div>
           <ul>
