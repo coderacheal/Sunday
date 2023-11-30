@@ -22,8 +22,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <div className="cursor-dot"></div>
-      <div className="cursor-outline"></div>
+      {/* <div className="cursor-dot"></div>
+      <div className="cursor-outline"></div> */}
       <div className="discoverSunday">
         <div>
           <ul>
@@ -42,7 +42,7 @@ const App = () => {
         <p className="tag-line">Discover how you <span className="askSunday"> text.</span> </p>
         <p className="slogan">Before your next text, ask <span className="askSunday"> SUNDAY</span> </p>
         <div className="login-container">
-          <button className="login">Create a account (coming soon)</button>
+          <button className="login">Create an account (coming soon)</button>
         </div>
       </div>
       <div>
