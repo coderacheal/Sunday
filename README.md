@@ -4,6 +4,13 @@
   <h1><b>Sunday</b></h1>
 </div>
 
+![image](https://github.com/coderacheal/Sunday/assets/97846040/87f3771c-9cf0-4752-b024-cb73a525d53e)
+
+
+![image](https://github.com/coderacheal/Sunday/assets/97846040/3af0c14c-c968-4248-8109-db67418bdcf3)
+
+
+
 <!-- TABLE OF CONTENTS -->
 
 # 📗 Table of Contents
