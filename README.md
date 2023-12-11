@@ -25,6 +25,8 @@
     - [Setup](#setup)
     - [Install](#install)
     - [Usage](#usage)
+    - [Link to Model](#Link-to-Mode)
+    - [Spin Up Docker containerl](#Spin-Up-Docker-container)
   - [👥 Authors ](#-authors-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
@@ -179,9 +181,21 @@ Example command:
   uvicorn main:app --reload
 ```
 
-**Link to Model**
+### Link to Model
 
 Please find a link to the model hosted in Huggingface [here](https/huggingface/coderacheal/model/sunday)
+
+### Spin Up Docker container
+- Start the docker engine using the Docker desktop application
+- Once started open the terminal for the project
+
+RUN
+`docker-compose build`
+
+Once the image is done built
+
+RUN
+`docker-compose up`
 
 ## 👥 Authors <a name="authors"></a>
 
