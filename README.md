@@ -4,6 +4,13 @@
   <h1><b>Sunday</b></h1>
 </div>
 
+![image](https://github.com/coderacheal/Sunday/assets/97846040/87f3771c-9cf0-4752-b024-cb73a525d53e)
+
+
+![image](https://github.com/coderacheal/Sunday/assets/97846040/3af0c14c-c968-4248-8109-db67418bdcf3)
+
+
+
 <!-- TABLE OF CONTENTS -->
 
 # 📗 Table of Contents
@@ -18,6 +25,8 @@
     - [Setup](#setup)
     - [Install](#install)
     - [Usage](#usage)
+    - [Link to Model](#Link-to-Mode)
+    - [Spin Up Docker containerl](#Spin-Up-Docker-container)
   - [👥 Authors ](#-authors-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
@@ -172,9 +181,21 @@ Example command:
   uvicorn main:app --reload
 ```
 
-**Link to Model**
+### Link to Model
 
 Please find a link to the model hosted in Huggingface [here](https/huggingface/coderacheal/model/sunday)
+
+### Spin Up Docker container
+- Start the docker engine using the Docker desktop application
+- Once started open the terminal for the project
+
+RUN
+`docker-compose build`
+
+Once the image is done built
+
+RUN
+`docker-compose up`
 
 ## 👥 Authors <a name="authors"></a>
 
