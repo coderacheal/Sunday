@@ -47,8 +47,8 @@ const Chat = ({ socket, username, room}) => {
         probability: `${(probability.toFixed(2) * 100)}%`
       };
 
-      console.log(sentiment)
-      console.log(probability)
+      // console.log(sentiment)
+      // console.log(probability)
   
       await socket.emit("send_message", messageData);
       setMessageList((list) => [...list, messageData]);
